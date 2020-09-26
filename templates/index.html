@@ -1,30 +1,68 @@
 {% extends 'base.html'%}
 
 {% block head%}
-
+<title>Obtner valores de DataBase a pdf</title>
 {%endblock%}
 
 {%block body%}
 
-<div class="content">
-    <h1>Tablita de la salada</h1>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Country</th>           
-            <th>Last_update</th>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                <a href="">Delete</a>
-                <br>
-                <a href="">Update</a>
-            </td>
-        </tr>
-    </table>
-</div>
-
+<div class="container-fluid text-center">    
+    <div class="row content">
+      <div class="col-sm-2 sidenav">
+          <br>
+        <p><a href="#">Link</a></p>
+        <p><a href="#">Link</a></p>
+        <p><a href="#">Link</a></p>
+      </div>
+      <div class="col-sm-8 text-left"> 
+          <br>
+        <h1>Tablita de la salada</h1>
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-7">
+                <div class="table-responsive-md">
+                    <table class="table table-hover w-auto table-bordered">
+                        <thead >
+                            <tr>
+                                <th>ID</th>
+                                <th>Country</th>           
+                                <th>Last_update</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for contenidos in contenido %}
+                            <tr class="table-info">
+                                <td>{{ contenidos.country_id }}</td>
+                                <td>{{ contenidos.country }}</td>
+                                <td>{{ contenidos.last_update }}</td>
+                                <td>
+                                    <a href="">Delete</a>
+                                    <br>
+                                    <a href="">Update</a>
+                                </td>
+                            </tr> 
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col" ></div>
+          </div>
+        
+        <form action="/" method="POST">
+        <input type="text" name="content" id="content">
+        <input type="submit" value="add Valor">
+        </form>
+      </div>
+      <div class="col-sm-2 sidenav">
+          <br>
+        <div class="well">
+          <p>ADS</p>
+        </div>
+        <div class="well">
+          <p>ADS</p>
+        </div>
+      </div>
+    </div>
+  </div>
 {%endblock%}
