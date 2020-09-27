@@ -45,14 +45,16 @@ def index():
 
     return render_template('index.html',errors=errors)
          
-@app.route('/sopa', methods=['GET','POST'])
+@app.route('/sopa', methods=['GET','POST'] )
 def sabor():
     contenido = Result.query.order_by(Result.country_id).all()
     contenido_schema = ResultSchema(many=True)
     salida = contenido_schema.dump(contenido)
     return jsonify({'data':salida})
 
-    #return jsonify(salida)
+@app.route('/download/pdf', methods=['GET','POST'])
+def create_pdf():
+    return "holaS"
 
 if __name__ == "__main__":
     app.run(debug=True)

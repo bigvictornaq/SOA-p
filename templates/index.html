@@ -1,7 +1,7 @@
 {% extends 'base.html'%}
 
 {% block head%}
-<title>Obtner valores de DataBase a pdf</title>
+<title>SOA</title>
 
 {%endblock%}
 
@@ -16,24 +16,6 @@
       <p><a href="#">Link</a></p>
     </div>
     <div class="col-sm-8 text-left">
-      
-      <div class="table-responsive">
-        <table id="tblmaster" class="table table-hover w-auto table-bordered">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Country</th>
-              <th>Last_update</th>
-            </tr>
-          </thead>
-          <tbody>
-          </tbody>
-        </table>
-      </div>
-      <form action="/" method="POST">
-        <input type="text" name="content" id="content">
-        <input type="submit" value="add Valor">
-      </form>
       <div class="jumbotron">
         <h1 class="display-3">Hello, world!</h1>
         <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
@@ -44,16 +26,35 @@
           <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
         </p>
       </div>
-
-    </div>
-    <div class="col-sm-2 sidenav">
-      <br>
-      <div class="well">
-        <p>ADS</p>
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-9">
+          <div class="table-responsive-md">
+            <table id="tblmaster" class="table table-hover w-auto table-bordered">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Country</th>
+                  <th>Last_update</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-      <div class="well">
-        <p>ADS</p>
+      <div class="card text-white bg-primary mb-3">
+        <div class="card-header">Datos</div>
+        <div class="card-body">
+          <form action="/" method="POST">
+            <input type="text" name="content" id="content">
+            <input type="submit" value="add Valor">
+          </form>
+        </div>    
       </div>
+      
+      <!--bajd-->
     </div>
   </div>
 </div>
