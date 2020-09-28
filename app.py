@@ -1,6 +1,6 @@
 from flask import Flask,render_template,url_for,request,redirect,jsonify,json
 from flask_sqlalchemy import SQLAlchemy
-from flask_marshmallow import Marshmallow
+from flask_marshmallow import Marshmallow,Schema,fields
 
 from os import getenv
 from dotenv  import load_dotenv
@@ -20,7 +20,10 @@ print(app_settings)
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
 
-from models import Result,ResultSchema
+from models import Result,ResultSchema,Empleado,Address,Ciudad,EmpleadoSchema,AddressSchema,cliente
+
+
+   
 
 @app.route('/', methods=['GET','POST'])
 def index():
@@ -44,7 +47,20 @@ def index():
     #return render_template('index.html',errors=errors,jsonify(salida))
 
     return render_template('index.html',errors=errors)
-         
+
+@app.route('/empleados', methods=['GET','POST'] )
+def customer():
+    
+    return render_template('emps.html')
+
+@app.route('/empleados/salsa', methods=['GET','POST'] )
+def customerD():
+    emp = Empleado.query.with_entities(Empleado.customer_id,Empleado.first_name,Empleado.last_name,Empleado.email,Address.address,Address.district).join(Address,Address.address_id == Empleado.address_id)
+    cliente_shema = cliente(many=True)
+    #datos = emp_schema.dump(emp)
+    datos = cliente_shema([{'empleado':x[0],'address':x[1]} for x in emp])
+    return jsonify({'emp':datos})
+
 @app.route('/sopa', methods=['GET','POST'] )
 def sabor():
     contenido = Result.query.order_by(Result.country_id).all()
