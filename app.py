@@ -20,7 +20,7 @@ print(app_settings)
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
 
-from models import Result,ResultSchema,Empleado,Address,Ciudad,EmpleadoSchema,AddressSchema,cliente
+from models import Result,ResultSchema,Empleado,Ciudad,EmpleadoSchema,Address
 
 
    
@@ -55,11 +55,9 @@ def customer():
 
 @app.route('/empleados/salsa', methods=['GET','POST'] )
 def customerD():
-    emp = Empleado.query.with_entities(Empleado.customer_id,Empleado.first_name,Empleado.last_name,Empleado.email,Address.address,Address.district).join(Address,Address.address_id == Empleado.address_id)
-    cliente_shema = cliente(many=True)
-    #datos = emp_schema.dump(emp)
-    datos = cliente_shema([{'empleado':x[0],'address':x[1]} for x in emp])
-    return jsonify({'emp':datos})
+    emp = Empleado.query.with_entities(Empleado.customer_id,Empleado.first_name,Empleado.last_name,Empleado.email,Address.address,Address.district).join(Address,Address.address_id == Empleado.address_id).all()
+    
+    return "Esta en progreos"
 
 @app.route('/sopa', methods=['GET','POST'] )
 def sabor():
