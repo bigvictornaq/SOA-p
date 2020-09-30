@@ -56,8 +56,10 @@ def customer():
 @app.route('/empleados/salsa', methods=['GET','POST'] )
 def customerD():
     emp = Empleado.query.with_entities(Empleado.customer_id,Empleado.first_name,Empleado.last_name,Empleado.email,Address.address,Address.district).join(Address,Address.address_id == Empleado.address_id).all()
-    
-    return "Esta en progreos"
+    soup_s = [{"Id":emps.customer_id,"First_Name":emps.first_name,"Last_Name":emps.last_name,"Email":emps.email,"Direccion":emps.address,"Distric":emps.district} for emps in emp ]
+    json_dums = json.dumps(soup_s)
+
+    return jsonify({"data":soup_s})
 
 @app.route('/sopa', methods=['GET','POST'] )
 def sabor():

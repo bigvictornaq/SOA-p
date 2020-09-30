@@ -25,44 +25,15 @@
             <table id="tblmasters" class="table table-hover w-auto table-bordered">
               <thead>
                 <tr>
-                  <th>ID</th>
-                  <th>nombre</th>
-                  <th>apellido</th>
-                  <th>Correo</th>
-                  <th>direccion</th>
-                  <th>districto</th>
+                  <th>Id</th>
+                  <th>First_Name</th>
+                  <th>Last_Name</th>
+                  <th>Email</th>
+                  <th>Direccion</th>
+                  <th>Distric</th>
                 </tr>
               </thead>
-              <tbody>
-                  {% for emps in emp %}
-                          <tr>
-                              <td>
-                                  {{ emps.customer_id }}
-                              </td>
-                              
-                              <td>
-                                {{ emps.first_name }}
-                            </td>
-                            
-                            <td>
-                                {{ emps.last_name }}
-                            </td>
-                            
-                            <td>
-                                {{ emps.email }}
-                            </td>
-                            
-                            <td>
-                                {{ emps.address }}
-                            </td>
-
-                            
-                            <td>
-                                {{ emps.district }}
-                            </td>
-                          </tr>
-                  {% endfor %}
-                  
+              <tbody> 
               </tbody>
             </table>
           </div>

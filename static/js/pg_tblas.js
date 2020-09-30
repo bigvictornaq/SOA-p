@@ -1,7 +1,15 @@
 $(document).ready(function () {
     $('#tblmasters').DataTable({
         "processing": true,
-        "ajax": "/empleados",
+        "ajax": "/empleados/salsa",
+        "columns":[
+            {"data":"Id"},
+            { "data":"First_Name"},
+            {"data":"Last_Name"},
+            {"data":"Email"},
+            {"data":"Direccion"},
+            {"data":"Distric"}
+        ],
         "dom":'Bfrtilp',
         "buttons":[
             {
