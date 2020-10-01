@@ -68,9 +68,9 @@ def sabor():
     salida = contenido_schema.dump(contenido)
     return jsonify({'data':salida})
 
-@app.route('/download/pdf', methods=['GET','POST'])
+@app.route('/lol', methods=['GET','POST'])
 def create_pdf():
-    return "holaS"
+    return render_template("under.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
